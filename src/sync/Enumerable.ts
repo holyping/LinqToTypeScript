@@ -1473,7 +1473,7 @@ export class Enumerable {
     private static max_1(source: Iterable<number>): number {
         let max: number | null = null
         for (const item of source) {
-            max = Math.max(max || Number.MIN_VALUE, item)
+            max = Math.max(max || Number.NEGATIVE_INFINITY, item)
         }
 
         if (max === null) {
@@ -1486,7 +1486,7 @@ export class Enumerable {
     private static max_2<TSource>(source: Iterable<TSource>, selector: (x: TSource) => number): number {
         let max: number | null = null
         for (const item of source) {
-            max = Math.max(max || Number.MIN_VALUE, selector(item))
+            max = Math.max(max || Number.NEGATIVE_INFINITY, selector(item))
         }
 
         if (max === null) {
@@ -1500,7 +1500,7 @@ export class Enumerable {
         source: Iterable<TSource>, selector: (x: TSource) => Promise<number>): Promise<number> {
         let max: number | null = null
         for (const item of source) {
-            max = Math.max(max || Number.MIN_VALUE, await selector(item))
+            max = Math.max(max || Number.NEGATIVE_INFINITY, await selector(item))
         }
 
         if (max === null) {
@@ -1524,7 +1524,7 @@ export class Enumerable {
     private static min_1(source: Iterable<number>) {
         let min: number | null = null
         for (const item of source) {
-            min = Math.min(min || Number.MAX_VALUE, item)
+            min = Math.min(min || Number.POSITIVE_INFINITY, item)
         }
 
         if (min === null) {
@@ -1537,7 +1537,7 @@ export class Enumerable {
     private static min_2<TSource>(source: Iterable<TSource>, selector: (x: TSource) => number) {
         let min: number | null = null
         for (const item of source) {
-            min = Math.min(min || Number.MAX_VALUE, selector(item))
+            min = Math.min(min || Number.POSITIVE_INFINITY, selector(item))
         }
 
         if (min === null) {
@@ -1551,7 +1551,7 @@ export class Enumerable {
         source: Iterable<TSource>, selector: (x: TSource) => Promise<number>): Promise<number> {
         let min: number | null = null
         for (const item of source) {
-            min = Math.min(min || Number.MAX_VALUE, await selector(item))
+            min = Math.min(min || Number.POSITIVE_INFINITY, await selector(item))
         }
 
         if (min === null) {
